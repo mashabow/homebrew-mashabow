@@ -16,6 +16,8 @@ class Unicode < Formula
   end
 
   def install
+    # use Python 3 to avoid "narrow" build problem
+    inreplace "unicode", "#!/usr/bin/python", "#!/usr/bin/env python3"
     inreplace "unicode", "/usr/share", share
     bin.install "unicode", "paracode"
     man1.install "unicode.1", "paracode.1"
